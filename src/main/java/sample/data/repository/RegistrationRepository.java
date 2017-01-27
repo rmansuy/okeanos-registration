@@ -19,4 +19,6 @@ public interface RegistrationRepository extends CrudRepository<Registration, Int
     Set<Registration> findAll();
 
     Registration findByFirstNameAndLastName(String lastName, String firstName);
+    
+    Registration findByLicenseNumber(String licenceNumber);
 }

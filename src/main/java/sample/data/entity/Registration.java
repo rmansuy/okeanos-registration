@@ -15,44 +15,52 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Romain
  */
 @Entity
-@Table(name = "Registration")
+@Table(name = "Registration", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"LicenseNumber"})})
 public class Registration {
-    
+
     @Id
     @GeneratedValue
     private int id;
-    
+
+    @Column(nullable = true)
+    private String licenseNumber;
+
     @Column(nullable = false)
     private String firstName;
-    
+
     @Column(nullable = false)
     private String lastName;
-    
+
     @Column(nullable = false)
     private String address;
-    
+
     @Column(nullable = false)
     private String postalCode;
-    
+
     @Column(nullable = false)
     private String city;
-    
+
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date birthDate;
-    
+
     @Column(nullable = false)
     private String mail;
-    
+
     @Column(nullable = false)
     private String phone;
-    
+
+    @Column(nullable = false)
+    private boolean valid;
+
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "registration")
     private MedicalCertificate medicalCertificate;
 
@@ -134,12 +142,21 @@ public class Registration {
 
     public void setMedicalCertificate(MedicalCertificate medicalCertificate) {
         this.medicalCertificate = medicalCertificate;
-    }    
-
-    @Override
-    public String toString() {
-        return "Registration{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", postalCode=" + postalCode + ", city=" + city + ", birthDate=" + birthDate + ", mail=" + mail + ", phone=" + phone + ", medicalCertificate=" + medicalCertificate + '}';
     }
-    
-    
+
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
 }

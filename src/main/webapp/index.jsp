@@ -44,8 +44,8 @@
         <div class="centre">
             <h1>Inscription Okeanos</h1>
             
-            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='main'">Je n'ai pas de licence FFESSM</button>
-            <button type="button" class="btn btn-primary btn-lg btn-block">J'ai déjà une licence FFESSM</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='new'">Je n'ai pas de licence FFESSM</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='renew'">J'ai déjà une licence FFESSM</button>
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='view'">Voir les membres</button>
             
         </div>

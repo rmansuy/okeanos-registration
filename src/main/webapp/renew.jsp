@@ -14,7 +14,6 @@
         <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="resources/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
         <link href="resources/css/normalize.css" rel="stylesheet" type="text/css">
-        <link href="resources/css/kayentis.css" rel="stylesheet" type="text/css">
         <link href="resources/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
         <link href="resources/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
 
@@ -37,6 +36,10 @@
                 color: red;
             }
 
+            message-block {
+                padding-top: 5px;
+            }
+
         </style>
     </head>
     <body>
@@ -45,19 +48,12 @@
 
             <h1>Inscription</h1>
 
-            <form:form modelAttribute="model" action="main" method="POST">
-                <spring:bind path="lastName">
+            <form:form modelAttribute="model" action="renew" method="POST">
+                <spring:bind path="licenseNumber">
                     <div class="form-group <%= status.isError() ? "has-error" : ""%>">
-                        <label for="nom">Nom</label>
-                        <form:input type="text" class="form-control" id="nom" path="lastName" placeholder="Nom" />
-                        <form:errors path="lastName" cssClass="error"/>
-                    </div>
-                </spring:bind>
-                <spring:bind path="firstName">
-                    <div class="form-group <%= status.isError() ? "has-error" : ""%>">
-                        <label for="prenom">Prénom</label>
-                        <form:input type="text" class="form-control" id="prenom" path="firstName" placeholder="Prenom" />
-                        <form:errors path="firstName" cssClass="error"/>
+                        <label for="licence">Numéro de licence FFESSM</label>
+                        <form:input type="text" class="form-control" id="licence" path="licenseNumber" placeholder="Numéro de licence" />
+                        <form:errors path="licenseNumber" cssClass="error"/>
                     </div>
                 </spring:bind>
                 <spring:bind path="address">
@@ -81,13 +77,6 @@
                         <form:errors path="city" cssClass="error"/>
                     </div>
                 </spring:bind>
-                <spring:bind path="birthDate">
-                    <div class="form-group <%= status.isError() ? "has-error" : ""%>">
-                        <label for="naissance">Date de naissance</label>
-                        <form:input type="date" class="form-control" id="naissance" path="birthDate" placeholder="Date de naissance" />
-                        <form:errors path="birthDate" cssClass="error"/>
-                    </div>
-                </spring:bind>
                 <spring:bind path="mail">
                     <div class="form-group <%= status.isError() ? "has-error" : ""%>">
                         <label for="email">Adresse mail</label>
@@ -104,14 +93,27 @@
                 </spring:bind>
 
                 <button type="submit" class="btn btn-default">S'inscrir</button>
+                <button type="button" class="btn btn-info" onclick="window.location='/'">Annuler</button>
             </form:form>
 
-            <c:if test="${success != null && success}">
-                <div class="alert alert-success alert-dismissable" style="text-align: left;">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Votre inscription vient d'étre prise en compte
-                </div>
-            </c:if>
+            <div class="message-block">
+
+                <c:if test="${success != null && success}">
+                    <div class="alert alert-success alert-dismissable" style="text-align: left;">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Votre inscription vient d'étre prise en compte
+                    </div>
+
+                </c:if>
+
+                <c:if test="${success != null && !success}">
+                    <div class="alert alert-danger alert-dismissable" style="text-align: left;">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <c:out value="${error_message}"/>
+                    </div>
+
+                </c:if>
+            </div>
 
         </div>
 
@@ -121,6 +123,6 @@
 <script type="text/javascript" charset="utf-8">
 
     $(function () {
-        $("#nom").focus();
+        $("#licence").focus();
     });
 </script>

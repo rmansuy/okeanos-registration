@@ -14,7 +14,6 @@
         <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="resources/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
         <link href="resources/css/normalize.css" rel="stylesheet" type="text/css">
-        <link href="resources/css/kayentis.css" rel="stylesheet" type="text/css">
         <link href="resources/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
         <link href="resources/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
 
@@ -29,8 +28,8 @@
             div.centre {
                 position:absolute;
                 left: 50%;
-                width: 900px;
-                margin-left: -450px; /* Cette valeur doit être la moitié négative de la valeur du width */
+                width: 960px;
+                margin-left: -480px; /* Cette valeur doit être la moitié négative de la valeur du width */
             }
 
             error {
@@ -44,9 +43,11 @@
         <div class="centre">
 
             <h1>Liste</h1>
+            <button type="button" class="btn btn-info" onclick="window.location = '/'">Menu</button>
 
             <table class="table table-hover" style="width: 100%;">
                 <tr>
+                    <th>Licence</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Adress</th>
@@ -55,18 +56,23 @@
                     <th>Date de naissance</th>
                     <th>eMail</th>
                     <th>Téléphone</th>
+                    <th>Valide ?</th>
 
                 </tr>
 
                 <c:forEach items="${model}" var="e">
-                    <td><c:out value="${e.firstName }" /></td>
-                    <td><c:out value="${e.lastName }" /></td>
-                    <td><c:out value="${e.address }" /></td>
-                    <td><c:out value="${e.postalCode }" /></td>
-                    <td><c:out value="${e.city }" /></td>
-                    <td><c:out value="${e.birthDate }" /></td>
-                    <td><c:out value="${e.mail }" /></td>
-                    <td><c:out value="${e.phone }" /></td>
+                    <tr>
+                        <td><c:out value="${e.licenseNumber }" /></td>
+                        <td><c:out value="${e.firstName }" /></td>
+                        <td><c:out value="${e.lastName }" /></td>
+                        <td><c:out value="${e.address }" /></td>
+                        <td><c:out value="${e.postalCode }" /></td>
+                        <td><c:out value="${e.city }" /></td>
+                        <td><c:out value="${e.birthDate }" /></td>
+                        <td><c:out value="${e.mail }" /></td>
+                        <td><c:out value="${e.phone }" /></td>
+                        <td><c:out value="${e.valid }" /></td>
+                    </tr>
                 </c:forEach>
             </table>
 
