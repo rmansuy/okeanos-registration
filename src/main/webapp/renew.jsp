@@ -92,8 +92,8 @@
                     </div>
                 </spring:bind>
 
-                <button type="submit" class="btn btn-default">S'inscrir</button>
-                <button type="button" class="btn btn-info" onclick="window.location='/'">Annuler</button>
+                <button type="submit" class="btn btn-default">S'inscrire</button>
+                <button type="button" class="btn btn-info" onclick="window.location='/'">Retour</button>
             </form:form>
 
             <div class="message-block">
